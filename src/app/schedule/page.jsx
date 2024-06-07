@@ -23,6 +23,7 @@ export default function SchedulePage({}) {
 
 function Schedule() {
 	const [selectedScene, setSelectedScene] = useState("Midgard");
+	const [search, setSearch] = useState("");
 
 	const {
 		data: scheduleData,
@@ -73,7 +74,10 @@ function Schedule() {
 			<p className="text-center mb-4">
 				Click on a scene above to view its schedule.
 			</p>
-			<div className="flex gap-4">
+			<form
+				onChange={(e) => setSearch(e.target.value)}
+				className="flex gap-4"
+			>
 				<div>
 					<label htmlFor="search" className="label px-2">
 						Want to know when your favorite band will play? Use the
@@ -91,7 +95,7 @@ function Schedule() {
 					value="Search"
 					className="button self-end"
 				/>
-			</div>
+			</form>
 			<h1 className="text-center text-3xl font-bold mb-4">
 				{selectedScene} Schedule
 			</h1>
