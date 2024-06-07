@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { endpoint } from "../modules/settings";
 
 export default function BandCard({ name, img, slug }) {
 	const imgSrc = img.startsWith("https://source.unsplash.com")
 		? img
-		: `https://mgp-allstars-2009-server.glitch.me/logos/${img}`;
+		: `${endpoint}logos/${img}`;
 
 	return (
 		<div className="relative overflow-hidden rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300 bg-dark-blue">
