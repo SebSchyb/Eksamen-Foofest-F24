@@ -43,10 +43,16 @@ function Schedule() {
 	});
 
 	if (scheduleLoading || bandsLoading)
-		return <Loadingspinner></Loadingspinner>;
+		return (
+			<div className="text-center text-red-500 min-h-screen">
+				<Loadingspinner></Loadingspinner>
+			</div>
+		);
 	if (scheduleError || bandsError)
 		return (
-			<div className="text-center text-red-500">Error loading data</div>
+			<div className="text-center text-red-500 min-h-screen">
+				Error loading data
+			</div>
 		);
 
 	const scenes = ["Midgard", "Vanaheim", "Jotunheim"];
