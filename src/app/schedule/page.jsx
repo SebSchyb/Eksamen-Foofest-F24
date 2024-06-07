@@ -73,6 +73,25 @@ function Schedule() {
 			<p className="text-center mb-4">
 				Click on a scene above to view its schedule.
 			</p>
+			<div className="flex gap-4">
+				<div>
+					<label htmlFor="search" className="label px-2">
+						Want to know when your favorite band will play? Use the
+						search bar below
+					</label>
+					<input
+						type="search"
+						name="search"
+						className="input"
+						placeholder="Search for your favorite band.."
+					/>
+				</div>
+				<input
+					type="submit"
+					value="Search"
+					className="button self-end"
+				/>
+			</div>
 			<h1 className="text-center text-3xl font-bold mb-4">
 				{selectedScene} Schedule
 			</h1>
