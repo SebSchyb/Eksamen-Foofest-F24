@@ -22,12 +22,13 @@ export default function BookingArea() {
 	const [vips, setVips] = useState(0);
 	const [twopers, setTwopers] = useState(0);
 	const [threepers, setthreepers] = useState(0);
+	const [tenst, setTents] = useState(false);
 
 	function handleGuests(e) {
 		setGuests(parseInt(e.target.value));
 	}
 	function checkGuests() {
-		if (guests + vips + threepers * 3 + twopers * 2) {
+		if (guests + vips == threepers * 3 + twopers * 2) {
 			setGuestTentsMatch(true);
 		}
 	}
