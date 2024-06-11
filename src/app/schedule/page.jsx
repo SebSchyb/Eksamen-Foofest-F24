@@ -119,7 +119,7 @@ function Schedule() {
 										.map((event, index) => (
 											<li
 												key={index}
-												className="p-4 bg-dark-blue rounded-lg shadow max-w-screen-lg"
+												className="p-4 bg-black-blue rounded-lg shadow max-w-screen-lg"
 											>
 												<Link
 													href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
