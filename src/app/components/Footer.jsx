@@ -23,31 +23,31 @@ const Footer = () => {
 					<nav className="flex space-x-8">
 						<Link
 							href="/"
-							className="text-gray-400 hover:text-main-orange transition-colors"
+							className="text-gray-400 hover:text-main-orange transition-colors link-animation"
 						>
 							Home
 						</Link>
 						<Link
 							href="/about"
-							className="text-gray-400 hover:text-main-orange transition-colors"
+							className="text-gray-400 hover:text-main-orange transition-colors link-animation"
 						>
 							Schedule
 						</Link>
 						<Link
 							href="/schedule"
-							className="text-gray-400 hover:text-main-orange transition-colors"
+							className="text-gray-400 hover:text-main-orange transition-colors link-animation"
 						>
 							Lineup
 						</Link>
 						<Link
 							href="/booking"
-							className="text-gray-400 hover:text-main-orange transition-colors"
+							className="text-gray-400 hover:text-main-orange transition-colors link-animation"
 						>
 							Booking
 						</Link>
 						<Link
 							href="/about"
-							className="text-gray-400 hover:text-main-orange transition-colors"
+							className="text-gray-400 hover:text-main-orange transition-colors link-animation"
 						>
 							About us
 						</Link>
