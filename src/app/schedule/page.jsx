@@ -62,54 +62,10 @@ function Schedule() {
 		<main className="text-white m-4 min-h-screen max-w-screen-lg mx-auto">
 			<h1 className="mx-auto font-bold text-5xl">Schedule</h1>
 
-			<div className="bg-black-blue p-4 flex lg:flex-row flex-col flex-grow-0 items-start rounded-lg m-4 justify-center gap-4">
-				<div className=" flex justify-center flex-col space-x-4 p-2">
-					<p className="text-center mb-4">
-						Click on a scene below to view its schedule.
-					</p>
-					<div className="flex gap-2">
-						{scenes.map((scene) => (
-							<button
-								key={scene}
-								onClick={() => setSelectedScene(scene)}
-								className={`px-4 py-2 rounded ${selectedScene === scene ? "bg-main-orange" : "bg-dark-blue hover:bg-dark-orange"}`}
-							>
-								{scene}
-							</button>
-						))}
-					</div>
-				</div>
-				<form
-					onChange={(e) => setSearch(e.target.value)}
-					className="flex gap-4 "
-				>
-					<div>
-						<label
-							htmlFor="search"
-							className="label px-2 text-base"
-						>
-							Want to know when your favorite band will play? Use
-							the search bar below
-						</label>
-						<input
-							type="search"
-							name="search"
-							className="input"
-							placeholder="Search for your favorite band.."
-						/>
-					</div>
-					<input
-						type="submit"
-						value="Search"
-						className="button self-end"
-					/>
-				</form>
-			</div>
-
 			<h2 className="text-center text-3xl font-bold mb-4">
 				{selectedScene} Schedule
 			</h2>
-			<div className="grid md:grid-cols-2">
+			<div className="grid md:grid-cols-2 px-4 lg:px-0">
 				<div>
 					{Object.entries(scheduleData[selectedScene]).map(
 						([day, events]) => (
@@ -182,7 +138,53 @@ function Schedule() {
 						),
 					)}
 				</div>
-				<div className="bg-logo-pattern bg-50% my-10 opacity-50"></div>
+				<div className="flex flex-col order-first md:order-2 mt-6">
+					{" "}
+					<div className="bg-black-blue p-4 flex  flex-col flex-grow-0 items-start rounded-lg m-4 justify-center gap-4">
+						<div className=" flex justify-center flex-col space-x-4 p-2">
+							<p className="text-center mb-4">
+								Click on a scene below to view its schedule.
+							</p>
+							<div className="flex gap-2">
+								{scenes.map((scene) => (
+									<button
+										key={scene}
+										onClick={() => setSelectedScene(scene)}
+										className={`px-4 py-2 rounded ${selectedScene === scene ? "bg-main-orange" : "bg-dark-blue hover:bg-dark-orange"}`}
+									>
+										{scene}
+									</button>
+								))}
+							</div>
+						</div>
+						<form
+							onChange={(e) => setSearch(e.target.value)}
+							className="flex gap-4 "
+						>
+							<div>
+								<label
+									htmlFor="search"
+									className="label px-2 text-base"
+								>
+									Want to know when your favorite band will
+									play? Use the search bar below
+								</label>
+								<input
+									type="search"
+									name="search"
+									className="input"
+									placeholder="Search for your favorite band.."
+								/>
+							</div>
+							<input
+								type="submit"
+								value="Search"
+								className="button self-end"
+							/>
+						</form>
+					</div>
+					<div className="bg-logo-pattern bg-50% opacity-50 grow"></div>
+				</div>
 			</div>
 		</main>
 	);
