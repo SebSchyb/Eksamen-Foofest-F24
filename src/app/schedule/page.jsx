@@ -150,7 +150,7 @@ function Schedule() {
 
 													<Link
 														href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
-														className="text-2xl font-bold text-white link-animation "
+														className="text-2xl font-bold text-white max-w-fit link-animation block"
 													>
 														<p className="text-lg mb-2">
 															{event.start} -{" "}
@@ -161,7 +161,7 @@ function Schedule() {
 												) : event.cancelled ? (
 													<Link
 														href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
-														className="text-2xl font-bold text-white hover:text-light-purple"
+														className="text-2xl font-bold text-white max-w-fit link-animation block"
 													>
 														<div className="text-lg mb-2">
 															{event.start} -{" "}

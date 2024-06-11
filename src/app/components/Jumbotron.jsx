@@ -50,7 +50,7 @@ export default function Jumbotron() {
 							experience.
 						</p>
 						<Link
-							className=" text-main-orange hover:underline transition-colors font-medium text-lg inline-flex items-center"
+							className=" text-main-orange transition-colors block font-medium text-lg max-w-fit items-center link-animation"
 							href="/lineup"
 						>
 							Go to lineup
@@ -66,7 +66,7 @@ export default function Jumbotron() {
 							you dont miss a moment of the excitement.
 						</p>
 						<Link
-							className=" text-main-orange hover:underline font-medium transition-colors text-lg inline-flex items-center"
+							className=" text-main-orange font-medium transition-colors block text-lg max-w-fit items-center link-animation"
 							href="/schedule"
 						>
 							Go to schedule
