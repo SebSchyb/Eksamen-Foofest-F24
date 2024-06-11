@@ -45,6 +45,12 @@ const Footer = () => {
 						>
 							Booking
 						</Link>
+						<Link
+							href="/about"
+							className="text-gray-400 hover:text-main-orange transition-colors"
+						>
+							About us
+						</Link>
 					</nav>
 				</div>
 				<div className="mt-10 text-center text-gray-500">
