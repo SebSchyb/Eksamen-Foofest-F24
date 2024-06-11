@@ -23,6 +23,7 @@ export default function SchedulePage({}) {
 
 function Schedule() {
 	const [selectedScene, setSelectedScene] = useState("Midgard");
+	const [search, setSearch] = useState("");
 
 	const {
 		data: scheduleData,
@@ -73,6 +74,28 @@ function Schedule() {
 			<p className="text-center mb-4">
 				Click on a scene above to view its schedule.
 			</p>
+			<form
+				onChange={(e) => setSearch(e.target.value)}
+				className="flex gap-4"
+			>
+				<div>
+					<label htmlFor="search" className="label px-2">
+						Want to know when your favorite band will play? Use the
+						search bar below
+					</label>
+					<input
+						type="search"
+						name="search"
+						className="input"
+						placeholder="Search for your favorite band.."
+					/>
+				</div>
+				<input
+					type="submit"
+					value="Search"
+					className="button self-end"
+				/>
+			</form>
 			<h1 className="text-center text-3xl font-bold mb-4">
 				{selectedScene} Schedule
 			</h1>
@@ -85,31 +108,40 @@ function Schedule() {
 									{day}
 								</h3>
 								<ul className="space-y-4">
-									{events.map((event, index) => (
-										<li
-											key={index}
-											className="p-4 bg-dark-blue rounded-lg shadow max-w-screen-lg"
-										>
-											<Link
-												href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
-												className="text-2xl font-bold text-white hover:text-light-purple"
+									{events
+										.filter((item) => {
+											return search.toLowerCase() === ""
+												? item
+												: item.act
+														.toLowerCase()
+														.includes(search);
+										})
+										.map((event, index) => (
+											<li
+												key={index}
+												className="p-4 bg-dark-blue rounded-lg shadow max-w-screen-lg"
 											>
-												{/* Regex er genereret af ChatGPT */}
+												<Link
+													href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
+													className="text-2xl font-bold text-white hover:text-light-purple"
+												>
+													{/* Regex er genereret af ChatGPT */}
 
-												<div className="text-lg mb-2">
-													{event.start} - {event.end}
-												</div>
-												{event.act}
-												{event.cancelled ? (
-													<span className="text-red-500 ml-2">
-														(Cancelled)
-													</span>
-												) : (
-													""
-												)}
-											</Link>
-										</li>
-									))}
+													<div className="text-lg mb-2">
+														{event.start} -{" "}
+														{event.end}
+													</div>
+													{event.act}
+													{event.cancelled ? (
+														<span className="text-red-500 ml-2">
+															(Cancelled)
+														</span>
+													) : (
+														""
+													)}
+												</Link>
+											</li>
+										))}
 								</ul>
 							</div>
 						),
