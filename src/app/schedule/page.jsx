@@ -129,33 +129,52 @@ function Schedule() {
 										.map((event, index) => (
 											<li
 												key={index}
-												className="p-4 bg-black-blue border border-gray-500 rounded-lg shadow max-w-screen-lg"
+												className="p-4 bg-black-blue border border-gray-500 rounded-lg shadow max-w-screen-lg "
 											>
-												<Link
-													href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
-													className="text-2xl font-bold text-white hover:text-light-purple"
-												>
-													{/* Regex er genereret af ChatGPT */}
+												{/* Regex er genereret af ChatGPT */}
 
-													<div className="text-lg mb-2">
-														{event.start} -{" "}
-														{event.end}
-													</div>
-													{event.act == "break" ? (
+												{event.act == "break" ? (
+													<div>
+														{/*  Break */}
+														<div className="text-lg mb-2">
+															{event.start} -{" "}
+															{event.end}
+														</div>
+
 														<p className="text-gray-500 text-md">
 															Break
 														</p>
-													) : (
-														event.act
-													)}
-													{event.cancelled ? (
+													</div>
+												) : event.act ? (
+													//act
+
+													<Link
+														href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
+														className="text-2xl font-bold text-white hover:text-main-orange "
+													>
+														<p className="text-lg mb-2">
+															{event.start} -{" "}
+															{event.end}
+														</p>
+														{event.act}
+													</Link>
+												) : event.cancelled ? (
+													<Link
+														href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
+														className="text-2xl font-bold text-white hover:text-light-purple"
+													>
+														<div className="text-lg mb-2">
+															{event.start} -{" "}
+															{event.end}
+														</div>
+														{event.act}{" "}
 														<span className="text-red-500 ml-2">
 															(Cancelled)
 														</span>
-													) : (
-														""
-													)}
-												</Link>
+													</Link>
+												) : (
+													""
+												)}
 											</li>
 										))}
 								</ul>
