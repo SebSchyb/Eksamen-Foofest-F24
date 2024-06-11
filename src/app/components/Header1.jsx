@@ -24,7 +24,7 @@ export default function Header() {
 
 	return (
 		<nav className="bg-black-blue border-gray-200 dark:bg-gray-900">
-			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-8">
+			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
 				<Link
 					href="/"
 					className="flex items-center space-x-3 rtl:space-x-reverse w-32"
@@ -66,7 +66,7 @@ export default function Header() {
 						<li>
 							<Link
 								href="/booking"
-								className="block py-2 text-xl px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								className="block py-2 text-lg px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
 							>
 								Booking
 							</Link>
@@ -74,7 +74,7 @@ export default function Header() {
 						<li>
 							<Link
 								href="/schedule"
-								className="block py-2 text-xl px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								className="block py-2 text-lg px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
 							>
 								Schedule
 							</Link>
@@ -82,7 +82,7 @@ export default function Header() {
 						<li>
 							<Link
 								href="/lineup"
-								className="block py-2 text-xl px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								className="block py-2 text-lg px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
 							>
 								Lineup
 							</Link>
@@ -90,7 +90,7 @@ export default function Header() {
 						<li>
 							<Link
 								href="/about"
-								className="block py-2 text-xl px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+								className="block py-2 text-lg px-3 text-gray-400 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-main-orange transition-colors md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
 							>
 								About us
 							</Link>
