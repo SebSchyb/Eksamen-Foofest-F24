@@ -41,4 +41,7 @@ body {
 	.button {
 		@apply text-white bg-main-orange hover:bg-orange-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main-orange  dark:focus:ring-blue-800 cursor-pointer transition-colors;
 	}
+	.link-animation {
+		@apply after:block after:mt-1 after:w-0 after:h-[2px] after:bg-main-orange after:transition-all after:duration-300 after:ease-in-out after:hover:w-full;
+	}
 }
