@@ -14,7 +14,7 @@ export default function About() {
 					immersive experiences, and a vibrant community.
 				</p>
 				<p className="mb-4">
-					From June 25th to July 1st, join us at Refshalvøen in
+					From August 12th to August 20th, join us at Refshalvøen in
 					Copenhagen, Denmark for an unforgettable experience. The
 					festival grounds offer ample space for camping, food
 					vendors, and multiple stages.
