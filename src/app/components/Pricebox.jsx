@@ -36,7 +36,7 @@ export default function Pricebox(props = {}) {
 			<div className="pb-4 mb-4 border-b-2 border-main-orange">
 				<p className="flex justify-between">
 					Green Camping: {greenCamping ? "Yes" : "No"}{" "}
-					<span>+{greenCamping ? "249" : "0"}DKK</span>
+					<span>+{greenCamping ? "249" : "0"} DKK</span>
 				</p>
 				<p className="flex justify-between">
 					Two Person tents: {twopers}{" "}

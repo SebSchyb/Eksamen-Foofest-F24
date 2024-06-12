@@ -22,7 +22,7 @@ export default function BookingArea() {
 	const [vips, setVips] = useState(0);
 	const [twopers, setTwopers] = useState(0);
 	const [threepers, setthreepers] = useState(0);
-	const [tenst, setTents] = useState(false);
+	const [tents, setTents] = useState(false);
 
 	function handleGuests(e) {
 		setGuests(parseInt(e.target.value));
@@ -141,63 +141,85 @@ export default function BookingArea() {
 				<div className="my-4 p-4  flex flex-col">
 					<h3 className="text-white text-xl text-center font-bold mb-2">
 						Tents{" "}
-						<Tooltip
-							showArrow={true}
-							content={
-								<p className="text-white max-w-prose bg-main-orange text-xs p-2 rounded-lg">
-									Would you like us to setup tents for you
-									before you arrive? Note that the amount of
-									tents must match the amount of guests
-								</p>
-							}
-							delay={500}
-						>
-							<span className="text-white bg-main-orange rounded-full px-2 cursor-default">
-								&#63;
-							</span>
-						</Tooltip>
 					</h3>
-
-					<label className="label" htmlFor="tent-2">
-						Setup 2 person tents{" "}
-						<span className="text-xs">(299,- per)</span>
-					</label>
-					<select
-						type="number"
-						required
-						className="input"
-						name="tent-2"
-						id="tent-2"
-					>
-						{" "}
-						<option value="">-Choose number of tents-</option>
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-					<label className="label mt-2" htmlFor="tent-3">
-						Setup 3 person tents{" "}
-						<span className="text-xs">(399,- per)</span>
-					</label>
-					<select
-						type="number"
-						required
-						className="input"
-						name="tent-3"
-						id="tent-3"
-					>
-						{" "}
-						<option value="">-Choose number of tents-</option>
-						<option value="0">0</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
+					<div>
+						<label htmlFor="tents" className="text-white">
+							Would you like us to setup tents for you, so they
+							are ready when you arrive?
+						</label>
+						<input
+							onChange={(e) => setTents(e.target.checked)}
+							type="checkbox"
+							name="tents"
+							id="tents"
+							className="w-4 h-4 ml-2 mb-1 text-pinks-600 accent-main-orange bg-gray-100 -gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:-gray-600"
+						/>
+					</div>
+					{tents ? (
+						<div className="mt-4">
+							<label className="label" htmlFor="tent-2">
+								Setup 2 person tents{" "}
+								<span className="text-xs">(299,- per)</span>
+							</label>
+							<select
+								type="number"
+								required
+								className="input"
+								name="tent-2"
+								id="tent-2"
+							>
+								{" "}
+								<option value="">
+									-Choose number of tents-
+								</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<label className="label mt-2" htmlFor="tent-3">
+								Setup 3 person tents{" "}
+								<span className="text-xs">(399,- per)</span>
+							</label>
+							<select
+								type="number"
+								required
+								className="input"
+								name="tent-3"
+								id="tent-3"
+							>
+								{" "}
+								<option value="">
+									-Choose number of tents-
+								</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</div>
+					) : (
+						<div>
+							<input
+								type="number"
+								name="tent-2"
+								id="tent-2"
+								className="sr-only"
+								value="0"
+							/>
+							<input
+								type="number"
+								name="tent-3"
+								id="tent-3"
+								className="sr-only"
+								value="0"
+							/>
+						</div>
+					)}
 				</div>
 				<h3 className="text-white text-xl text-center font-bold mb-2">
 					Extra Options
