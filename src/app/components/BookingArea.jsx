@@ -22,12 +22,13 @@ export default function BookingArea() {
 	const [vips, setVips] = useState(0);
 	const [twopers, setTwopers] = useState(0);
 	const [threepers, setthreepers] = useState(0);
+	const [tenst, setTents] = useState(false);
 
 	function handleGuests(e) {
 		setGuests(parseInt(e.target.value));
 	}
 	function checkGuests() {
-		if (guests + vips + threepers * 3 + twopers * 2) {
+		if (guests + vips == threepers * 3 + twopers * 2) {
 			setGuestTentsMatch(true);
 		}
 	}
@@ -212,7 +213,24 @@ export default function BookingArea() {
 						className="w-full py-4 ms-2 text-sm font-medium text-gray-200"
 						htmlFor="greencamping"
 					>
-						Green Camping Option(+249)
+						Green Camping Option(+249){" "}
+						<Tooltip
+							showArrow={true}
+							content={
+								<p className="text-white max-w-prose bg-main-orange text-xs p-2 rounded-lg">
+									Want to camp sustainably and thrash
+									responsibly? Choose Green Camping! It offers
+									minimal impact practices to keep the
+									festival grounds pristine for future mosh
+									pits. Details at the campsite info booth.
+								</p>
+							}
+							delay={500}
+						>
+							<span className="text-white bg-main-orange rounded-full px-1 cursor-default">
+								&#63;
+							</span>
+						</Tooltip>
 					</label>
 				</div>
 				<input
