@@ -24,6 +24,7 @@ export default function SchedulePage({}) {
 function Schedule() {
 	const [selectedScene, setSelectedScene] = useState("Midgard");
 	const [search, setSearch] = useState("");
+	const [searchActive, setSearchActive] = useState(true);
 
 	const {
 		data: scheduleData,
@@ -59,19 +60,21 @@ function Schedule() {
 	const scenes = ["Midgard", "Vanaheim", "Jotunheim"];
 
 	return (
-		<main className="text-white m-4 min-h-screen max-w-screen-lg mx-auto">
-			<h1 className="mx-auto font-bold text-5xl">Schedule</h1>
+		<main className="text-white m-4 min-h-screen max-w-screen-lg mx-auto ">
+			<h1 className="mx-auto font-bold text-5xl lg:text-left text-center">
+				Schedule
+			</h1>
 
 			<h2 className="text-center text-3xl font-bold mb-4">
 				{selectedScene} Schedule
 			</h2>
-			<div className="grid md:grid-cols-2 px-4 lg:px-0">
+			<div className="grid md:grid-cols-2 md:px-4 lg:px-0 ">
 				<div>
 					{Object.entries(scheduleData[selectedScene]).map(
 						([day, events]) => (
 							<div key={day} className="mb-6">
-								<h3 className="font-bold text-2xl mb-2">
-									{day}
+								<h3 className="font-bold text-2xl mb-2 uppercase">
+									{day + "day"}
 								</h3>
 								<ul className="space-y-4">
 									{events
@@ -85,10 +88,8 @@ function Schedule() {
 										.map((event, index) => (
 											<li
 												key={index}
-												className="p-4 bg-black-blue border border-gray-500 rounded-lg shadow max-w-screen-lg "
+												className="p-4 bg-black-blue sm:border border-blue-950 sm:rounded-lg shadow max-w-screen-lg "
 											>
-												{/* Regex er genereret af ChatGPT */}
-
 												{event.act == "break" ? (
 													<div>
 														{/*  Break */}
@@ -108,6 +109,8 @@ function Schedule() {
 														href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
 														className="text-2xl font-bold text-white max-w-fit link-animation block"
 													>
+														{" "}
+														{/* Regex er genereret af ChatGPT */}
 														<p className="text-lg mb-2">
 															{event.start} -{" "}
 															{event.end}
@@ -138,14 +141,14 @@ function Schedule() {
 						),
 					)}
 				</div>
-				<div className="flex flex-col order-first md:order-2 mt-6">
+				<div className="flex flex-col order-first md:order-2 mt-6 top-0">
 					{" "}
-					<div className="bg-black-blue p-4 flex  flex-col flex-grow-0 items-start rounded-lg m-4 justify-center gap-4">
-						<div className=" flex justify-center flex-col space-x-4 p-2">
+					<div className="bg-black-blue p-4 flex  flex-col md:fixed flex-grow-0  items-center md:rounded-lg md:m-4 justify-center gap-4 z-50 max-w-md">
+						<div className="flex justify-center flex-col p-2 w-full ">
 							<p className="text-center mb-4">
 								Click on a scene below to view its schedule.
 							</p>
-							<div className="flex gap-2">
+							<div className="flex gap-2 md:flex-row flex-wrap justify-center flex-col">
 								{scenes.map((scene) => (
 									<button
 										key={scene}
@@ -179,11 +182,11 @@ function Schedule() {
 							<input
 								type="submit"
 								value="Search"
-								className="button self-end"
+								className="button self-end sr-only"
 							/>
 						</form>
 					</div>
-					<div className="bg-logo-pattern bg-50% opacity-50 grow"></div>
+					<div className="bg-logo-pattern bg-50% opacity-50 grow z-0"></div>
 				</div>
 			</div>
 		</main>

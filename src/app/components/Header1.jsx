@@ -23,7 +23,7 @@ export default function Header() {
 	});
 
 	return (
-		<nav className="bg-black-blue border-gray-200 dark:bg-gray-900">
+		<nav className="bg-black-blue border-gray-200 dark:bg-gray-900 z-50">
 			<div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
 				<Link
 					href="/"
