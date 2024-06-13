@@ -10,7 +10,7 @@ export default function About() {
 				<h1 className="text-4xl font-extrabold mb-6">About FooFest</h1>
 				<p className="mb-4 leading-relaxed">
 					FooFest is an annual celebration of heavy metal music,
-					featuring top metal bands from around the world. It's the
+					featuring top metal bands from around the world. Its the
 					ultimate festival for metalheads, offering a diverse lineup,
 					immersive experiences, and a vibrant community.
 				</p>
@@ -21,9 +21,9 @@ export default function About() {
 					vendors, and multiple stages.
 				</p>
 				<p className="leading-relaxed">
-					Whether you're a die-hard metal fan or just looking to enjoy
+					Whether youre a die-hard metal fan or just looking to enjoy
 					some great music, FooFest has something for everyone. We
-					can't wait to see you there!
+					cant wait to see you there!
 				</p>
 			</section>
 
