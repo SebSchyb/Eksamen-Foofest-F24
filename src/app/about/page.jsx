@@ -4,7 +4,7 @@ import FAQ from "@/app/components/FAQ";
 
 export default function About() {
 	return (
-		<div className="text-white m-4 min-h-screen mx-auto max-w-screen-lg grid grid-cols-2 gap-8">
+		<div className="text-white m-4 min-h-screen mx-auto max-w-screen-lg grid md:grid-cols-2 gap-8">
 			<section className="mb-8 max-w-lg bg-black-blue p-6 rounded-2xl">
 				<h1 className="text-4xl font-bold mb-4">About FooFest</h1>
 				<p className="mb-4 max-w-prose">
