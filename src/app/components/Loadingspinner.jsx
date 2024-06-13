@@ -1,6 +1,9 @@
 export default function Loadingspinner() {
 	return (
-		<div role="status" className="flex m-auto justify-center w-screen">
+		<div
+			role="status"
+			className="flex m-auto h-screen justify-center w-screen"
+		>
 			<svg
 				aria-hidden="true"
 				className="inline w-40 h-40 text-gray-200 animate-spin dark:text-gray-600 fill-main-orange"
