@@ -205,7 +205,7 @@ function Schedule() {
 			</div>
 			<button
 				onClick={() => setSearchActive((prev) => !prev)}
-				className="border border-main-orange p-4 rounded-full bg-[#e3eeff2f] md:invisible fixed bottom-8 right-8 z-50 active:animate-ping-slow"
+				className="border border-main-orange p-4 rounded-full bg-[#e3eeff2f] md:invisible fixed bottom-8 right-8 z-50 pressed:animate-ping-slow"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
