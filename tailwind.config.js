@@ -11,6 +11,9 @@ module.exports = {
 			"50%": "100%",
 		},
 		extend: {
+			animation: {
+				"ping-slow": "ping 1s linear",
+			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic":

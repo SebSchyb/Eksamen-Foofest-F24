@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	QueryClient,
 	QueryClientProvider,
@@ -25,7 +25,16 @@ function Schedule() {
 	const [selectedScene, setSelectedScene] = useState("Midgard");
 	const [search, setSearch] = useState("");
 	const [searchActive, setSearchActive] = useState(true);
-
+	useEffect(() => {
+		function resetResize() {
+			if (window.innerWidth >= 768) {
+				if (searchActive == true) {
+					setSearchActive(searchActive);
+				}
+			}
+		}
+		window.addEventListener("resize", resetResize);
+	});
 	const {
 		data: scheduleData,
 		error: scheduleError,
@@ -73,8 +82,8 @@ function Schedule() {
 					{Object.entries(scheduleData[selectedScene]).map(
 						([day, events]) => (
 							<div key={day} className="mb-6">
-								<h3 className="font-bold text-2xl mb-2 uppercase">
-									{day + "day"}
+								<h3 className="font-bold text-2xl mb-2 mx-2 md:mx-0 uppercase">
+									{day}
 								</h3>
 								<ul className="space-y-4">
 									{events
@@ -141,54 +150,74 @@ function Schedule() {
 						),
 					)}
 				</div>
-				<div className="flex flex-col order-first md:order-2 mt-6 top-0">
-					{" "}
-					<div className="bg-black-blue p-4 flex  flex-col md:fixed flex-grow-0  items-center md:rounded-lg md:m-4 justify-center gap-4 z-50 max-w-md">
-						<div className="flex justify-center flex-col p-2 w-full ">
-							<p className="text-center mb-4">
-								Click on a scene below to view its schedule.
-							</p>
-							<div className="flex gap-2 md:flex-row flex-wrap justify-center flex-col">
-								{scenes.map((scene) => (
-									<button
-										key={scene}
-										onClick={() => setSelectedScene(scene)}
-										className={`px-4 py-2 rounded ${selectedScene === scene ? "bg-main-orange" : "bg-dark-blue hover:bg-dark-orange"}`}
+
+				{searchActive && (
+					<div className="flex flex-col order-first md:order-2 mt-6 top-0">
+						{" "}
+						<div className="bg-black-blue p-4 flex flex-col max-md:bottom-0 fixed flex-grow-0 max-lg:w-full items-center md:rounded-lg md:m-4 justify-center gap-4 z-50 md:max-w-md">
+							<div className="flex justify-center flex-col p-2 w-full ">
+								<p className="text-center mb-4">
+									Click on a scene below to view its schedule.
+								</p>
+								<div className="flex gap-2 md:flex-row flex-wrap justify-center flex-col">
+									{scenes.map((scene) => (
+										<button
+											key={scene}
+											onClick={() =>
+												setSelectedScene(scene)
+											}
+											className={`px-4 py-2 rounded ${selectedScene === scene ? "bg-main-orange" : "bg-dark-blue hover:bg-dark-orange"}`}
+										>
+											{scene}
+										</button>
+									))}
+								</div>
+							</div>
+							<form
+								onChange={(e) => setSearch(e.target.value)}
+								className="flex gap-4 "
+							>
+								<div>
+									<label
+										htmlFor="search"
+										className="label px-2 text-base"
 									>
-										{scene}
-									</button>
-								))}
-							</div>
-						</div>
-						<form
-							onChange={(e) => setSearch(e.target.value)}
-							className="flex gap-4 "
-						>
-							<div>
-								<label
-									htmlFor="search"
-									className="label px-2 text-base"
-								>
-									Want to know when your favorite band will
-									play? Use the search bar below
-								</label>
+										Want to know when your favorite band
+										will play? Use the search bar below
+									</label>
+									<input
+										type="search"
+										name="search"
+										className="input"
+										placeholder="Search for your favorite band.."
+									/>
+								</div>
 								<input
-									type="search"
-									name="search"
-									className="input"
-									placeholder="Search for your favorite band.."
+									type="submit"
+									value="Search"
+									className="button self-end sr-only"
 								/>
-							</div>
-							<input
-								type="submit"
-								value="Search"
-								className="button self-end sr-only"
-							/>
-						</form>
+							</form>
+						</div>
+						<div className="bg-logo-pattern bg-50% opacity-50 grow z-0"></div>
 					</div>
-					<div className="bg-logo-pattern bg-50% opacity-50 grow z-0"></div>
-				</div>
+				)}
 			</div>
+			<button
+				onClick={() => setSearchActive((prev) => !prev)}
+				className="border border-main-orange p-4 rounded-full bg-[#e3eeff2f] md:invisible fixed bottom-8 right-8 z-50 active:animate-ping-slow"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					fill="#e95d39"
+					className="bi bi-search"
+					viewBox="0 0 16 16"
+				>
+					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+				</svg>
+			</button>
 		</main>
 	);
 }
