@@ -19,7 +19,7 @@ export default function Home() {
 						Copenhagen, Refshaløen
 					</h2>
 					<Image
-						className=""
+						className="max-md:w-80"
 						src={logoPic}
 						alt="logo"
 						height={200}
