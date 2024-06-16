@@ -12,6 +12,7 @@ import Image from "next/image";
 import Loadingspinner from "../components/Loadingspinner";
 
 const queryClient = new QueryClient();
+/*QueryClient er et objekt, der bruges til at konfigurere og styre cache og forespørgsler*/
 
 export default function SchedulePage({}) {
 	return (
@@ -19,12 +20,17 @@ export default function SchedulePage({}) {
 			<Schedule />
 		</QueryClientProvider>
 	);
+	/*QueryClientProvider sørger for at gøre queryClient tilgængelig for alle child-komponenter, der bruger React Query hooks, */
 }
 
 function Schedule() {
-	const [selectedScene, setSelectedScene] = useState("Midgard");
+	const [selectedScene, setSelectedScene] =
+		useState(
+			"Midgard",
+		); /*selectedScene: En tilstandsvariabel, der holder styr på den valgte scene, med standardværdien "Midgard". på linjer 176 bliver den brugt til at vælge scenerne */
 	const [search, setSearch] = useState("");
 	const [searchActive, setSearchActive] = useState(true);
+
 	useEffect(() => {
 		function resetResize() {
 			if (window.innerWidth >= 768) {
@@ -35,6 +41,8 @@ function Schedule() {
 		}
 		window.addEventListener("resize", resetResize);
 	});
+
+	// useQuery hook for at hente data for tidsplaner
 	const {
 		data: scheduleData,
 		error: scheduleError,
@@ -53,6 +61,7 @@ function Schedule() {
 		queryFn: () => fetchData(endpoint + "/bands"),
 	});
 
+	// Håndtering af loading og error tilstande
 	if (scheduleLoading || bandsLoading)
 		return (
 			<div className="text-center text-red-500 min-h-screen">
@@ -66,6 +75,7 @@ function Schedule() {
 			</div>
 		);
 
+	// Scenerne som brugeren kan vælge mellem, bliver brugt til at mappe scenerne på linje 170
 	const scenes = ["Midgard", "Vanaheim", "Jotunheim"];
 
 	return (
@@ -79,6 +89,7 @@ function Schedule() {
 			</h2>
 			<div className="grid md:grid-cols-2 md:px-4 lg:px-0 ">
 				<div>
+					{/* Filtrering af tidsplanen baseret på den valgte scene */}
 					{Object.entries(scheduleData[selectedScene]).map(
 						([day, events]) => (
 							<div key={day} className="mb-6">
@@ -86,6 +97,7 @@ function Schedule() {
 									{day}
 								</h3>
 								<ul className="space-y-4">
+									{/* Filtrering af events baseret på søgning */}
 									{events
 										.filter((item) => {
 											return search.toLowerCase() === ""
@@ -99,27 +111,23 @@ function Schedule() {
 												key={index}
 												className="p-4 bg-black-blue sm:border border-blue-950 sm:rounded-lg shadow max-w-screen-lg "
 											>
+												{/* Visning af break i tidsplanen */}
 												{event.act == "break" ? (
 													<div>
-														{/*  Break */}
 														<div className="text-lg mb-2">
 															{event.start} -{" "}
 															{event.end}
 														</div>
-
 														<p className="text-gray-500 text-md">
 															Break
 														</p>
 													</div>
 												) : event.act ? (
-													//act
-
+													// Visning af bands
 													<Link
 														href={`/lineup/${event.act.replace(/\s+/g, "-").replace(/[,]+/g, "").replace(/-+/g, "-").toLowerCase()}`}
 														className="text-2xl font-bold text-white max-w-fit link-animation block"
 													>
-														{" "}
-														{/* Regex er genereret af ChatGPT */}
 														<p className="text-lg mb-2">
 															{event.start} -{" "}
 															{event.end}
@@ -151,9 +159,9 @@ function Schedule() {
 					)}
 				</div>
 
+				{/* Søgefunktion og scener knapper */}
 				{searchActive && (
 					<div className="flex flex-col order-first md:order-2 mt-6 top-0">
-						{" "}
 						<div className="bg-black-blue p-4 flex flex-col max-md:bottom-0 fixed flex-grow-0 max-lg:w-full items-center md:rounded-lg md:m-4 justify-center gap-4 z-50 md:max-w-md">
 							<div className="flex justify-center flex-col p-2 w-full ">
 								<p className="text-center mb-4">
