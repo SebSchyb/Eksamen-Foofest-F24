@@ -1,6 +1,6 @@
 "use client";
 import { handleReservation } from "../modules/handleres";
-import Timer from "@/app/components/test/Timer";
+import Timer from "@/app/components/Timer";
 
 export default function BookingPersonal({ extras, id }) {
 	let extrasarray = [];
