@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function CountdownTimer() {
-	const [seconds, setSeconds] = useState(0.5 * 60);
+	const [seconds, setSeconds] = useState(10 * 60);
 
 	useEffect(() => {
 		const intervalId = setInterval(() => {
@@ -16,11 +16,11 @@ export default function CountdownTimer() {
 	const displayTime = formatTime(seconds);
 
 	return (
-		<div className="text-center text-5xl min-h-screen grid items-center">
+		<div className="">
 			{seconds >= 1 ? (
-				<h2>Countdown: {displayTime}</h2> //display timer
+				<h2>Time to finish order: {displayTime}</h2> // display timer
 			) : (
-				<h2>Timer has run out</h2> //Gør et eller andet
+				<h2>Timer has run out</h2> // Gør et eller andet
 			)}
 		</div>
 	);

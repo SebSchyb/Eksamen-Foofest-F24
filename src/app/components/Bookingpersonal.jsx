@@ -1,5 +1,6 @@
 "use client";
 import { handleReservation } from "../modules/handleres";
+import Timer from "@/app/components/test/Timer";
 
 export default function BookingPersonal({ extras, id }) {
 	let extrasarray = [];
@@ -9,7 +10,10 @@ export default function BookingPersonal({ extras, id }) {
 
 	return (
 		<section className="p-4 max-w-screen-sm flex flex-col items-center rounded-lg bg-black-blue shadow-md ">
-			<h1 className="text-lg font-bold text-white ">Personal Info</h1>
+			<div className="flex flex-col items-center text-white">
+				<h1 className="text-lg font-bold  ">Personal Info</h1>
+				<Timer />
+			</div>
 			<form className=" rounded-lg w-full" action={handleReservation}>
 				<div className="flex flex-col p-4 [&>*:nth-child(even)]:mb-2">
 					<label className="label" htmlFor="firstname">

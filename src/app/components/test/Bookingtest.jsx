@@ -1,6 +1,6 @@
 "use client";
 import { redirect } from "next/navigation";
-import { fetchData } from "../modules/functions";
+import { fetchData } from "../../modules/functions";
 import { useFormStatus } from "react-dom";
 import { Tooltip } from "@nextui-org/tooltip";
 import {
@@ -8,8 +8,8 @@ import {
 	databaseTestEndport,
 	endpoint,
 	headerList,
-} from "../modules/settings";
-import { areasAvailable, submitForm } from "../modules/actions";
+} from "../../modules/settings";
+import { areasAvailable, submitForm } from "../../modules/actions";
 import { useEffect, useState } from "react";
 import { FormProvider } from "react-hook-form";
 
@@ -25,16 +25,14 @@ export default function BookingArea() {
 	const [tents, setTents] = useState(false);
 
 	function handleGuests(e) {
-		if (tents) {
-			setGuests(parseInt(e.target.value));
-			setVips(parseInt(e.target.value));
-			setTwopers(parseInt(e.target.value));
-			setthreepers(parseInt(e.target.value));
-			const totalGuests = guests + vips;
-			const totalCapacity = 2 * twopers + 3 * threepers;
-			console.log(totalCapacity === totalGuests);
-			setGuestTentsMatch(totalCapacity === totalGuests);
-		}
+		setGuests(parseInt(e.target.value));
+		setVips(parseInt(e.target.value));
+		setTwopers(parseInt(e.target.value));
+		setthreepers(parseInt(e.target.value));
+		const totalGuests = guests + vips;
+		const totalCapacity = 2 * twopers + 3 * threepers;
+		console.log(totalCapacity === totalGuests);
+		return totalCapacity === totalGuests;
 	}
 	function checkGuests() {
 		if (guests + vips == threepers * 3 + twopers * 2) {
@@ -72,7 +70,7 @@ export default function BookingArea() {
 	return (
 		<form
 			onChange={checkGuests}
-			action={submitForm}
+			action="#"
 			className="p-8 max-w-screen-sm grid bg-black-blue rounded-lg gap-6  items-center [&>*]:w-full [&>*]:h-full"
 		>
 			<div className="[&>*]:rounded">
@@ -166,12 +164,6 @@ export default function BookingArea() {
 					</div>
 					{tents ? (
 						<div className="mt-4">
-							{!guestTentsMatch && (
-								<p className="text-black-blue w-full mx-auto font-bold max-w-prose bg-main-yellow text-xs p-2 mb-2 rounded-lg">
-									The amount of tents needs to match the
-									amount of guests
-								</p>
-							)}
 							<label className="label" htmlFor="tent-2">
 								Setup 2 person tents{" "}
 								<span className="text-xs">(299,- per)</span>
